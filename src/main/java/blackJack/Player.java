@@ -18,6 +18,14 @@ public class Player {
         score += card.getNum();
     }
 
+    public void printCardsScore() {
+        System.out.print(name + " :");
+        for (Card card: hand) {
+            System.out.print(card.getShape() + card.getNum());
+        }
+        System.out.println(" score:" + score);
+    }
+
     public List<Card> getHand() {
         return hand;
     }

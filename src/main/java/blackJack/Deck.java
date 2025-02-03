@@ -6,8 +6,13 @@ import java.util.List;
 
 
 public class Deck {
+    private List<Card> cards;
 
-    public List makeCard() {
+    public Deck() {
+        this.cards = makeCard();
+    }
+
+    private List<Card> makeCard() {
         List<String> shapeList = List.of("♠", "♥", "♣", "◆");
         List<Card> cardDeck = new ArrayList<>();
 
@@ -18,5 +23,9 @@ public class Deck {
         }
         Collections.shuffle(cardDeck);
         return cardDeck;
+    }
+
+    public List<Card> getCards() {
+        return cards;
     }
 }
