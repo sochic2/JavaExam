@@ -4,11 +4,11 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Blackjack {
-    List<Card> deck = new Deck().getCards();
-    Player user = new Player("user");
-    Player dealer = new Player("dealer");
-    Scanner sc = new Scanner(System.in);
-    int idx = 0;
+    private List<Card> deck = new Deck().getCards();
+    public Player user = new Player("user");
+    private Player dealer = new Player("dealer");
+    private Scanner sc = new Scanner(System.in);
+    private int idx = 0;
 
 
 

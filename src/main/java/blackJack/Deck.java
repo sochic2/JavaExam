@@ -6,11 +6,7 @@ import java.util.List;
 
 
 public class Deck {
-    private List<Card> cards;
-
-    public Deck() {
-        this.cards = makeCard();
-    }
+    private List<Card> cards = makeCard();
 
     private List<Card> makeCard() {
         List<String> shapeList = List.of("♠", "♥", "♣", "◆");
