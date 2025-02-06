@@ -5,7 +5,11 @@ import java.util.*;
 public class Baseball {
     private List<String> solutionBalls = new ArrayList<>();
     private Scanner sc = new Scanner(System.in);
+    private Integer digitNum;
 
+    public Baseball(Integer digitNum) {
+        this.digitNum = digitNum;
+    }
 
     private void addBalls() {
         List<String> candiBalls = new ArrayList<>();
@@ -18,15 +22,30 @@ public class Baseball {
 
 
     private boolean isThreeNum(String str) {
-        return str.matches("^[1-9]{3}$");
+        return str.matches(String.format("^[1-9]{%d}$", digitNum));
     }
 
+    private List<Integer> calcStrikeBall(List<String> inputBalls) {
+
+        int strikeCount = 0;
+        int ballCount = 0;
+
+        for (int i=0; i <3; i++) {
+            String inputBall = inputBalls.get(i);
+            if (inputBall.equals(solutionBalls.get(i))) {
+                strikeCount += 1;
+            } else if (solutionBalls.contains(inputBall)) {
+                ballCount += 1;
+            }
+        }
+        return new ArrayList<>(List.of(strikeCount, ballCount));
+    }
 
     private void play() {
         addBalls();
         System.out.println(solutionBalls);
         while (true) {
-            System.out.println("1-9사이의 숫자 3개를 입력하세요");
+            System.out.printf("1-9사이의 숫자 %d개를 입력하세요%n", digitNum);
             String inputNumbers = sc.nextLine();
 
             if (!isThreeNum(inputNumbers)) {
@@ -36,23 +55,17 @@ public class Baseball {
 
             List<String> inputBalls;
             inputBalls = new ArrayList<>(List.of(inputNumbers.split("")));
-            int strikeCount = 0;
-            int ballCount = 0;
 
-            for (int i=0; i <3; i++) {
-                String inputBall = inputBalls.get(i);
-                if (inputBall.equals(solutionBalls.get(i))) {
-                    strikeCount += 1;
-                } else if (solutionBalls.contains(inputBall)) {
-                    ballCount += 1;
-                }
-            }
+            List<Integer> strikeBall = calcStrikeBall(inputBalls);
+            int strikeCount = strikeBall.get(0);
+            int ballCount = strikeBall.get(1);
 
-            if (strikeCount == 3) {
+
+            if (strikeCount == digitNum) {
                 System.out.println(inputNumbers + "  정답입니다.");
                 return;
             } else if (strikeCount == 0 && ballCount == 0) {
-                System.out.println(inputNumbers + "  3Out입니다.");
+                System.out.println(inputNumbers + "  Out입니다.");
             }
             else {
                 System.out.println(inputNumbers + "   "+ strikeCount + " Strike " + ballCount + " Ball");
@@ -62,7 +75,7 @@ public class Baseball {
 
 
     public static void main(String[] args) {
-        Baseball game = new Baseball();
+        Baseball game = new Baseball(3);
         game.play();
     }
 
