@@ -18,10 +18,9 @@
 
 
     <bean id="blackJackGame" class="blackJack.Blackjack">
+        <constructor-arg name="deck" ref="blackJackDeck" />
         <constructor-arg name="user" value="user" ref="blackJackUser" />
-    </bean>
-    <bean id="blackJackGame" class="blackJack.Blackjack">
-        <constructor-arg name="user" value="dealer" ref="blackJackDealer" />
+        <constructor-arg name="dealer" value="dealer" ref="blackJackDealer" />
     </bean>
 
 
