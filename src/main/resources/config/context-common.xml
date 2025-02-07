@@ -9,18 +9,24 @@
     <bean id="mysqlRepository" class="db.MysqlRepository" />
 
     <bean id="userService" class="service.UserService">
-        <constructor-arg name="repository" ref="mysqlRespository" />
+        <constructor-arg ref="mysqlRepository" />
     </bean>
 
-    <bean id="blackJackDeck" class="blackJack.Deck"/>
-    <bean id="blackJackUser" class="blackJack.Player"/>
-    <bean id="blackJackDealer" class="blackJack.Player"/>
 
+    <bean id="blackJackDeck" class="blackJack.Deck" init-method="makeCard"/>
+
+    <bean id="blackJackUser" class="blackJack.Player">
+        <constructor-arg value="user" />
+    </bean>
+
+    <bean id="blackJackDealer" class="blackJack.Player">
+        <constructor-arg value="dealer" />
+    </bean>
 
     <bean id="blackJackGame" class="blackJack.Blackjack">
-        <constructor-arg name="deck" ref="blackJackDeck" />
-        <constructor-arg name="user" value="user" ref="blackJackUser" />
-        <constructor-arg name="dealer" value="dealer" ref="blackJackDealer" />
+        <constructor-arg ref="blackJackDeck" />
+        <constructor-arg ref="blackJackUser" />
+        <constructor-arg ref="blackJackDealer" />
     </bean>
 
 

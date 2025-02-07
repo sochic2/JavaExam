@@ -6,9 +6,14 @@ import java.util.List;
 
 
 public class Deck {
-    private List<Card> cards = makeCard();
+    private List<Card> cards;
 
-    private List<Card> makeCard() {
+    public Deck() {
+        cards = new ArrayList<>();
+    }
+
+
+    private void makeCard() {
         List<String> shapeList = List.of("♠", "♥", "♣", "◆");
         List<Card> cardDeck = new ArrayList<>();
 
@@ -18,7 +23,7 @@ public class Deck {
             }
         }
         Collections.shuffle(cardDeck);
-        return cardDeck;
+        cards = cardDeck;
     }
 
     public List<Card> getCards() {

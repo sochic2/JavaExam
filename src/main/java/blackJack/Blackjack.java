@@ -8,16 +8,25 @@ public class Blackjack {
 //    public Player user = new Player("user");
 //    private Player dealer = new Player("dealer");
     private Scanner sc = new Scanner(System.in);
-    private int idx = 0;
 
-    private List<Card> deck;
+    private Deck deck;
     private Player user;
     private Player dealer;
+    private List<Card> cards;
+
+//    public Blackjack(Deck deck, Player user, Player dealer, List<Card> cards) {
+//        this.deck = deck;
+//        this.user = user;
+//        this.dealer = dealer;
+//        this.cards = deck.getCards();
+//    }
+
 
     public Blackjack(Deck deck, Player user, Player dealer) {
-        this.deck = deck.getCards();
+        this.deck = deck;
         this.user = user;
         this.dealer = dealer;
+        this.cards = deck.getCards();
     }
 
     public void printResult(String winner) {
@@ -66,10 +75,12 @@ public class Blackjack {
 
 
     public void play() {
+        int idx = 0;
+        System.out.println(cards);
         for (int i=0; i < 2; i++) {
-            user.addCard(deck.get(idx));
+            user.addCard(cards.get(idx));
             idx += 1;
-            dealer.addCard(deck.get(idx));
+            dealer.addCard(cards.get(idx));
             idx += 1;
         }
 
@@ -86,7 +97,7 @@ public class Blackjack {
                 checkWinner();
                 return;
             } else if (inputStr.equals("Y")) {
-                user.addCard(deck.get(idx));
+                user.addCard(cards.get(idx));
                 idx += 1;
                 user.printCardsScore();
             } else {

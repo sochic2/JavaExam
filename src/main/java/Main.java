@@ -1,4 +1,6 @@
 import blackJack.Blackjack;
+import blackJack.Deck;
+import blackJack.Player;
 import config.AppConfig;
 import item.Item;
 import org.springframework.context.ApplicationContext;
@@ -14,11 +16,14 @@ public class Main {
 //        ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         ApplicationContext context = new ClassPathXmlApplicationContext("classpath:config/context-common.xml");
 //                                      generic 확인
-        UserService service = context.getBean("userService", UserService.class);
+//        UserService service = context.getBean("userService", UserService.class);
 //        service.insert();
 
-//        Blackjack game = context.getBean("blackJackGame", Blackjack.class);
-//        game.play();
+//        Player user = context.getBean("blackJackUser", Player.class);
+//        Player dealer = context.getBean("blackJackDealer", Player.class);
+
+        Blackjack game = context.getBean("blackJackGame", Blackjack.class);
+        game.play();
 
 
     }
