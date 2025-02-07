@@ -3,22 +3,14 @@ package blackJack;
 import java.util.List;
 import java.util.Scanner;
 
-public class Blackjack {
-//    private List<Card> deck = new Deck().getCards();
-//    public Player user = new Player("user");
-//    private Player dealer = new Player("dealer");
+public class Blackjack_bk {
+    private List<Card> deck = new Deck().getCards();
+    public Player user = new Player("user");
+    private Player dealer = new Player("dealer");
     private Scanner sc = new Scanner(System.in);
     private int idx = 0;
 
-    private List<Card> deck;
-    private Player user;
-    private Player dealer;
 
-    public Blackjack(Deck deck, Player user, Player dealer) {
-        this.deck = deck.getCards();
-        this.user = user;
-        this.dealer = dealer;
-    }
 
     public void printResult(String winner) {
         if (winner.equals("user")) {
@@ -96,7 +88,7 @@ public class Blackjack {
     }
 
     public static void main(String[] args) {
-        Blackjack game = new Blackjack();
+        Blackjack_bk game = new Blackjack_bk();
         game.play();
     }
 
