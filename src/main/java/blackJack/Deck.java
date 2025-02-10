@@ -8,12 +8,13 @@ import java.util.List;
 public class Deck {
     private List<Card> cards;
 
+
     public Deck() {
-        cards = new ArrayList<>();
+        this.cards = new ArrayList<>();
     }
 
 
-    private void makeCard() {
+    public void makeCard() {
         List<String> shapeList = List.of("♠", "♥", "♣", "◆");
         List<Card> cardDeck = new ArrayList<>();
 
@@ -26,7 +27,10 @@ public class Deck {
         cards = cardDeck;
     }
 
-    public List<Card> getCards() {
-        return cards;
+
+    public Card giveCard() {
+        cards.remove(0);
+        return cards.get(0);
     }
+
 }

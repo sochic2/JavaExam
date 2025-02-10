@@ -13,7 +13,8 @@
     </bean>
 
 
-    <bean id="blackJackDeck" class="blackJack.Deck" init-method="makeCard"/>
+
+    <bean id="blackJackDeck" class="blackJack.Deck"/>
 
     <bean id="blackJackUser" class="blackJack.Player">
         <constructor-arg value="user" />
